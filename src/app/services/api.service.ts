@@ -1,0 +1,18 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import * as env from '../../environments/environment';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ApiService {
+  http = inject(HttpClient);
+  baseUrl = env.environment.base_api_url;
+
+  get<TParam, TReturn>(...params: TParam[]): Observable<TReturn> {
+    const { ...values } = params;
+    console.log(values);
+    return this.http.get<TReturn>(`${this.baseUrl}/${values[0]}${values[1]}`);
+  }
+}
