@@ -1,0 +1,60 @@
+<div class="converter-container">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()">
+    <div class="input-fields">
+      <div class="converter-amount">
+        <mat-form-field>
+          <mat-label> Convert </mat-label>
+          <input matInput formControlName="toBeConverted" />
+        </mat-form-field>
+      </div>
+      <ng-container *ngIf="store.currencies() as currencies">
+        <div class="converter-currencies">
+          <div class="base-currency">
+            <mat-form-field>
+              <mat-label>Base currency</mat-label>
+              <mat-select formControlName="baseCurrency">
+                @for (currency of currencies; track currency.id) {
+                  <mat-option [value]="currency.short_code">{{
+                    currency.name
+                  }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="targetCurrency">
+            <mat-form-field>
+              <mat-label>Target currency</mat-label>
+              <mat-select formControlName="targetCurrency">
+                @for (currency of currencies; track currency.id) {
+                  <mat-option [value]="currency.short_code">{{
+                    currency.name
+                  }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- <mat-form-field>
+          <mat-label>CurrencyType</mat-label>
+          <mat-select formControlName="currencyType">
+          <mat-option></mat-option>
+          </mat-select>
+        </mat-form-field> -->
+      </ng-container>
+    </div>
+    <div class="converter-button">
+      <button mat-raised-button type="submit" color="primary">Convert</button>
+    </div>
+  </form>
+
+  <mat-card class="converter-card">
+    <mat-card-header>
+      <mat-card-title>Converted Value</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <span>{{ store.targetCurrencyValue() | number: "1.2-2" }}</span>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
