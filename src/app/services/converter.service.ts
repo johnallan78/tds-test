@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { map, Observable, of, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CurrencyDto } from '../models/currency';
 import { ConversionDto } from '../models/convert';
 

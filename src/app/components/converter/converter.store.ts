@@ -12,7 +12,7 @@ import {
   currencyType,
 } from '../../services/converter.service';
 import { inject } from '@angular/core';
-import { CurrencyDetailsDto, CurrencyDto } from '../../models/currency';
+import { CurrencyDetailsDto } from '../../models/currency';
 
 export interface ConverterStoreState {
   isLoading: boolean;
