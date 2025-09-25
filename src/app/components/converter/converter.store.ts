@@ -82,7 +82,6 @@ export const ConverterStore = signalStore(
         ),
       ),
     ),
-    onValueChanged: rxMethod<void>(pipe()),
   })),
   withHooks({
     onInit(store) {
