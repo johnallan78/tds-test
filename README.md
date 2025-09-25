@@ -11,7 +11,9 @@ To set the api key, navigate to `src/environments/environment.ts` and replace `y
 
 If you don't have one, you can get one here [https://currencybeacon.com](https://currencybeacon.com/register)
 
-Clone the repo and run `npm install` in the root directory
+Clone the repo: `git clone https://github.com/johnallan78/tds-test.git`
+
+run `npm install` in the root directory
 
 If all goes well you should be able to run `npm run start` and navigate to `localhost:4200`
 
