@@ -12,7 +12,6 @@ export class ApiService {
 
   get<TParam, TReturn>(...params: TParam[]): Observable<TReturn> {
     const { ...values } = params;
-    console.log(values);
     return this.http.get<TReturn>(`${this.baseUrl}/${values[0]}${values[1]}`);
   }
 }
