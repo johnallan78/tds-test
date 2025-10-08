@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 import * as env from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class ApiService {
-  http = inject(HttpClient);
-  baseUrl = env.environment.base_api_url;
+	http = inject(HttpClient);
+	baseUrl = env.environment.base_api_url;
 
-  get<TParam, TReturn>(...params: TParam[]): Observable<TReturn> {
-    const { ...values } = params;
-    return this.http.get<TReturn>(`${this.baseUrl}/${values[0]}${values[1]}`);
-  }
+	get<TParam, TReturn>(...params: TParam[]): Observable<TReturn> {
+		const { ...values } = params;
+		return this.http.get<TReturn>(`${this.baseUrl}/${values[0]}${values[1]}`);
+	}
 }
