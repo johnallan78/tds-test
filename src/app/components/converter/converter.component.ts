@@ -41,7 +41,7 @@ export class ConverterComponent implements OnInit {
 
 	ngOnInit() {
 		this.form = this.formBuilder.group({
-			toBeConverted: [0, [Validators.required, Validators.min(0.01)]],
+			toBeConverted: [1, [Validators.required, Validators.min(0.01)]],
 			baseCurrency: ['AED', Validators.required],
 			targetCurrency: ['AFN', Validators.required],
 			currencyType: ['fiat', Validators.required],

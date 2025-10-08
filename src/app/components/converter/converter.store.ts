@@ -28,7 +28,7 @@ export interface ConverterStoreState {
 export const InitState: ConverterStoreState = {
 	isLoading: false,
 	error: null,
-	baseCurrencyAmount: 0,
+	baseCurrencyAmount: 1,
 	targetCurrencyValue: 0,
 	currencyType: 'fiat',
 	baseCurrency: 'AED', // UAE Dirham
@@ -99,6 +99,7 @@ export const ConverterStore = signalStore(
 	withHooks({
 		onInit(store) {
 			store.getCurrencies();
+			store.convert({baseCurrency: store.baseCurrency(), targetCurrency: store.targetCurrency(), amount: store.baseCurrencyAmount()})
 		},
 	}),
 );
