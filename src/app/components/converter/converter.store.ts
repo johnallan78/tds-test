@@ -55,7 +55,7 @@ export const ConverterStore = signalStore(
 									patchState(store, {
 										isLoading: false,
 										targetCurrencyValue: response.value,
-                    error: null
+										error: null,
 									});
 								},
 							}),
@@ -78,7 +78,11 @@ export const ConverterStore = signalStore(
 					converterService.currencies(store.currencyType()).pipe(
 						map((details) => details.response),
 						tap((response) => {
-							patchState(store, { isLoading: false, currencies: response, error: null });
+							patchState(store, {
+								isLoading: false,
+								currencies: response,
+								error: null,
+							});
 						}),
 						catchError((error) => {
 							patchState(store, {
