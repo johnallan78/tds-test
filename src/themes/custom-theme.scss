@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat.core();
+
+// Define the theme object.
+$custom-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// M3 themes must be wrapped in a selector
+html {
+  @include mat.all-component-themes($custom-theme);
+}
+
+// You can also include themes for specific components if you want to optimize bundle size
+// @include mat.core-theme($custom-theme);
+// @include mat.button-theme($custom-theme);
+// @include mat.form-field-theme($custom-theme);
+// @include mat.input-theme($custom-theme);
+// @include mat.card-theme($custom-theme);
+// @include mat.select-theme($custom-theme);
+
+// Custom theme variables you can use throughout your app
+html {
+  --primary-color: #{mat.get-theme-color($custom-theme, primary)};
+  --accent-color: #{mat.get-theme-color($custom-theme, tertiary)};
+  --warn-color: #{mat.get-theme-color($custom-theme, error)};
+}
+
+// Global styles that use the theme
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: mat.get-theme-typography($custom-theme, body-large, font-family);
+}

@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+// Define the dark theme object.
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0
+  )
+));
+
+// Dark theme styles - M3 themes must be wrapped in a selector
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+  
+  // Custom dark theme variables
+  --primary-color: #{mat.get-theme-color($dark-theme, primary)};
+  --accent-color: #{mat.get-theme-color($dark-theme, tertiary)};
+  --warn-color: #{mat.get-theme-color($dark-theme, error)};
+  
+  // Dark theme background
+  background-color: mat.get-theme-color($dark-theme, surface);
+  color: mat.get-theme-color($dark-theme, on-surface);
+}
