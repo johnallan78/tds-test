@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tds-test": {
+    "currency-converter": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/tds-test",
+            "outputPath": "dist/currency-converter",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -55,10 +55,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "tds-test:build:production"
+              "buildTarget": "currency-converter:build:production"
             },
             "development": {
-              "buildTarget": "tds-test:build:development"
+              "buildTarget": "currency-converter:build:development"
             }
           },
           "defaultConfiguration": "development"
