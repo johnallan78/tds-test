@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="converter-display">
+        <span class="secondary-row"> {{ store.baseCurrencyAmount() }} {{ store.baseCurrency() }} equals</span>
+        <span class="primary-row"> {{ store.targetCurrencyValue() | number: '1.2-2'}} {{ store.targetCurrency()}}</span>
+        <span class="secondary-row"> {{ store.timestampToUtc() }}</span>
+    </div>
+</div>

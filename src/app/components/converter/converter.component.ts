@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ConverterStore } from './converter.store';
 import { CommonModule } from '@angular/common';
 import {
@@ -15,24 +15,27 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ErrorComponent } from '../error/error.component';
+import { ConverterDisplayComponent } from "./converter-display/converter-display.component";
 
 @Component({
 	selector: 'app-converter',
 	imports: [
-		CommonModule,
-		ReactiveFormsModule,
-		FormsModule,
-		MatFormFieldModule,
-		MatInputModule,
-		MatCardModule,
-		MatSelectModule,
-		MatButtonModule,
-		MatButtonToggleModule,
-		ErrorComponent,
-	],
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    ErrorComponent,
+    ConverterDisplayComponent
+],
 	templateUrl: './converter.component.html',
 	styleUrl: './converter.component.css',
 	providers: [ConverterStore],
+	encapsulation: ViewEncapsulation.None,
 })
 export class ConverterComponent implements OnInit {
 	store = inject(ConverterStore);

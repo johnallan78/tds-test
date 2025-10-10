@@ -1,6 +1,7 @@
 import {
 	patchState,
 	signalStore,
+	withComputed,
 	withHooks,
 	withMethods,
 	withState,
@@ -11,7 +12,7 @@ import {
 	ConverterService,
 	currencyType,
 } from '../../services/converter.service';
-import { inject } from '@angular/core';
+import { computed, inject } from '@angular/core';
 import { CurrencyDetailsDto } from '../../models/currency';
 
 export interface ConverterStoreState {
@@ -23,6 +24,8 @@ export interface ConverterStoreState {
 	baseCurrency: string;
 	targetCurrency: string;
 	currencies: CurrencyDetailsDto[];
+	date: string;
+	timestamp: number;
 }
 
 export const InitState: ConverterStoreState = {
@@ -34,10 +37,15 @@ export const InitState: ConverterStoreState = {
 	baseCurrency: 'AED', // UAE Dirham
 	targetCurrency: 'AFN', // Afghani
 	currencies: [],
+	date: Date.toString(),
+	timestamp: Date.now(),
 };
 
 export const ConverterStore = signalStore(
 	withState<ConverterStoreState>(InitState),
+	withComputed((store) => ({
+		timestampToUtc: computed(() => new Date(store.timestamp() * 1000))
+	})),
 	withMethods((store, converterService = inject(ConverterService)) => ({
 		convert: rxMethod<{
 			baseCurrency: string;
@@ -55,6 +63,8 @@ export const ConverterStore = signalStore(
 									patchState(store, {
 										isLoading: false,
 										targetCurrencyValue: response.value,
+										date: response.date,
+										timestamp: response.timestamp,
 										error: null,
 									});
 								},
