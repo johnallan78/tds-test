@@ -10,7 +10,7 @@ To set the api key, navigate to `src/environments/environment.ts` and replace `y
 
 If you don't have one, you can get one here [https://currencybeacon.com](https://currencybeacon.com/register)
 
-Clone the repo: `git clone https://github.com/johnallan78/tds-test.git`
+Clone the repo: `git clone https://github.com/johnallan78/ng-currency-converter.git`
 
 run `npm install` in the root directory
 
