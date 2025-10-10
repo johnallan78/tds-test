@@ -44,7 +44,7 @@ export const InitState: ConverterStoreState = {
 export const ConverterStore = signalStore(
 	withState<ConverterStoreState>(InitState),
 	withComputed((store) => ({
-		timestampToUtc: computed(() => new Date(store.timestamp() * 1000))
+		timestampToUtc: computed(() => new Date(store.timestamp() * 1000)),
 	})),
 	withMethods((store, converterService = inject(ConverterService)) => ({
 		convert: rxMethod<{
@@ -53,7 +53,14 @@ export const ConverterStore = signalStore(
 			amount: number;
 		}>(
 			pipe(
-				tap(() => patchState(store, { isLoading: true })),
+				tap((t) =>
+					patchState(store, {
+						isLoading: true,
+						baseCurrency: t.baseCurrency,
+						targetCurrency: t.targetCurrency,
+						baseCurrencyAmount: t.amount,
+					}),
+				),
 				switchMap((t) =>
 					converterService
 						.convert(t.baseCurrency, t.targetCurrency, t.amount)
@@ -109,7 +116,11 @@ export const ConverterStore = signalStore(
 	withHooks({
 		onInit(store) {
 			store.getCurrencies();
-			store.convert({baseCurrency: store.baseCurrency(), targetCurrency: store.targetCurrency(), amount: store.baseCurrencyAmount()})
+			store.convert({
+				baseCurrency: store.baseCurrency(),
+				targetCurrency: store.targetCurrency(),
+				amount: store.baseCurrencyAmount(),
+			});
 		},
 	}),
 );

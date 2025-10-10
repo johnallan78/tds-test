@@ -15,23 +15,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ErrorComponent } from '../error/error.component';
-import { ConverterDisplayComponent } from "./converter-display/converter-display.component";
+import { ConverterDisplayComponent } from './converter-display/converter-display.component';
 
 @Component({
 	selector: 'app-converter',
 	imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    ErrorComponent,
-    ConverterDisplayComponent
-],
+		CommonModule,
+		ReactiveFormsModule,
+		FormsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatCardModule,
+		MatSelectModule,
+		MatButtonModule,
+		MatButtonToggleModule,
+		ErrorComponent,
+		ConverterDisplayComponent,
+	],
 	templateUrl: './converter.component.html',
 	styleUrl: './converter.component.css',
 	providers: [ConverterStore],
